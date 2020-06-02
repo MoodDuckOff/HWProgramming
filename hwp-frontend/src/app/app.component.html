@@ -1,0 +1,40 @@
+<div class="editor-and-build">
+  <label>Редактор:</label>
+  <div class="form-group" style="height: 400px; width: 800px;">
+    <ngx-monaco-editor
+      style="height: 100%;"
+      [options]="editorOptions"
+      [(ngModel)]="buildResult.code"
+    >
+    </ngx-monaco-editor>
+  </div>
+  <label>Stdin</label>
+  <div class="form-group">
+    <textarea
+      class="form-control"
+      style="height: 200px; width: 400px; background: #1e1e1e; color: #d4d4d4;"
+      [(ngModel)]="buildResult.input"
+    ></textarea>
+  </div>
+  <div class="form-group">
+    <button class="form-control" (click)="submit(buildResult)">
+      Скомпілювати та запустити
+    </button>
+  </div>
+  <div *ngIf="done">
+    <div>Отримано з серверу:</div>
+    <div>Відповідь від сервера: {{ receivedResult.isSuccess }}</div>
+    <label>
+      <textarea
+        spellcheck="false"
+        rows="25"
+        cols="80"
+        disabled="true"
+        readonly="true"
+        style="background: #1e1e1e; color: #d4d4d4;"
+        >{{ receivedResult.output }}
+    </textarea
+      >
+    </label>
+  </div>
+</div>
