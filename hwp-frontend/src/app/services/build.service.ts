@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class BuildService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   postData(buildResult: BuildResultDTO) {
     const body = {
@@ -13,7 +13,7 @@ export class BuildService {
       output: buildResult.output,
       isSuccess: buildResult.isSuccess,
     };
-    return this.http.post('https://localhost:5001/api/build/run', body, {
+    return this.http.post('https://localhost:5001/api/build', body, {
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS',
