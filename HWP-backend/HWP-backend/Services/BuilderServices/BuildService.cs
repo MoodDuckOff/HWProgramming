@@ -21,14 +21,12 @@ namespace HWP_backend.Services.BuilderServices
         private BuildModelDTO Build(string pathDir, string fileName)
         {
             var result = _builder.Build(pathDir, fileName);
-            //Console.WriteLine($"Main.cpp:\nBuilded: {result.IsSuccess}\nText:\n{result.Output}");
             return result;
         }
 
         private string Run(string pathDir, string fileName, params string[] inputs)
         {
             var result = _builder.Run(pathDir, fileName, inputs);
-            //Console.WriteLine($"Main.exe:\n{result}");
             return result;
         }
 
