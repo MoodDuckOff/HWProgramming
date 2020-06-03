@@ -12,10 +12,6 @@ namespace HWP_backend.Services.SolvedTaskServices
         public SolvedTaskService(DataContext context)
         {
             _context = context;
-
-
-            //    var dummy = _context.Tasks.Include(task => task.SolvedTasks)
-            //.Where(x => x.SolvedTasks.Any(solvedTask => solvedTask.UserId == 1));
         }
 
         public IEnumerable<SolvedTask> GetAllSolvedTasks()
