@@ -61,7 +61,6 @@ namespace HWP_backend.Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var tokenString = tokenHandler.WriteToken(token);
 
-            // return basic user info and authentication token
             return Ok(new
             {
                 user.Id,

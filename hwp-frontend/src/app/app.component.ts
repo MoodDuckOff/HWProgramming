@@ -1,36 +1,22 @@
-import { BuildService } from './services/build.service';
 import { Component } from '@angular/core';
-import { BuildResultDTO } from './models/BuildResultDTO';
+import { Router } from '@angular/router';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  providers: [BuildService],
-})
+import { AuthenticationService } from './services';
+import { User } from './models';
+
+@Component({ selector: 'app', templateUrl: 'app.component.html' })
 export class AppComponent {
-  editorOptions = { theme: 'vs-dark', language: 'cpp' };
-  editorCode =
-    '#include<iostream>\n\n' +
-    'using namespace std;\n\n' +
-    'int main()\n{\n' +
-    '    cout << "Hello, World!";\n' +
-    '    return 0;\n}';
-  title = 'hwp-frontend';
-  buildResult: BuildResultDTO = new BuildResultDTO(this.editorCode);
+  currentUser: User;
 
-  receivedResult: BuildResultDTO;
-  done = false;
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  }
 
-  constructor(private buildService: BuildService) {}
-  submit(buildResult: BuildResultDTO) {
-    this.buildService.postData(buildResult).subscribe(
-      (data: BuildResultDTO) => {
-        this.receivedResult = data;
-        this.done = true;
-        console.log(this.receivedResult.output);
-      },
-      (error) => console.log(error)
-    );
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
   }
 }

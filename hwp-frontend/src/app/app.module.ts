@@ -1,23 +1,35 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-import { AppComponent } from './app.component';
-import { BuildService } from './services/build.service';
+import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
+
+
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+
+import { JwtInterceptor, ErrorInterceptor } from './helpers';
+import { HomeComponent } from './home';
+import { LoginComponent } from './login';
 
 @NgModule({
-  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule,
-    FormsModule,
-    MonacoEditorModule,
+    AppRoutingModule
   ],
-  providers: [BuildService],
-  bootstrap: [AppComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    LoginComponent
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
