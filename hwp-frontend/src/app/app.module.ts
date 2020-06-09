@@ -10,7 +10,9 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { JwtInterceptor, ErrorInterceptor } from './helpers';
 import { HomeComponent } from './home';
+import { AdminComponent } from './admin';
 import { LoginComponent } from './login';
+import { TeacherComponent } from './teacher';
 
 @NgModule({
   imports: [
@@ -22,14 +24,16 @@ import { LoginComponent } from './login';
   declarations: [
     AppComponent,
     HomeComponent,
+    AdminComponent,
+    TeacherComponent,
     LoginComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
-
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

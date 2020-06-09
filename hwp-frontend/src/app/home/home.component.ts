@@ -7,15 +7,21 @@ import { UserService, AuthenticationService } from '@app/services';
 @Component({ templateUrl: 'home.component.html' })
 export class HomeComponent implements OnInit {
   loading = false;
-  users: User[];
+  user: User;
+  userFromApi: User;
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private authenticationService: AuthenticationService
+  ) {
+    this.user = this.authenticationService.userValue;
+  }
 
   ngOnInit() {
     this.loading = true;
-    this.userService.getAll().pipe(first()).subscribe(users => {
+    this.userService.getById(this.user.id).pipe(first()).subscribe(user => {
       this.loading = false;
-      this.users = users;
+      this.userFromApi = user;
     });
   }
 }

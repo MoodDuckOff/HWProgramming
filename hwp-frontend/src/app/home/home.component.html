@@ -1,12 +1,15 @@
 <div class="card mt-4">
-  <h4 class="card-header">You're logged in with Angular 9 & JWT!!</h4>
+  <h4 class="card-header">Home</h4>
   <div class="card-body">
-    <h6>Users from secure api end point</h6>
+    <p>
+      Your role is: <strong>{{ user.role }}</strong
+      >.
+    </p>
+    <p>This page can be accessed by <u>all authenticated users</u>.</p>
+    <p class="mb-1">Current user from secure api end point:</p>
     <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
-    <ul *ngIf="users">
-      <li *ngFor="let user of users">
-        {{ user.firstName }} {{ user.lastName }}
-      </li>
+    <ul *ngIf="userFromApi">
+      <li>{{ userFromApi.firstName }} {{ userFromApi.lastName }}</li>
     </ul>
   </div>
 </div>
