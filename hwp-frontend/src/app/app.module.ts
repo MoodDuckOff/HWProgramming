@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { HomeComponent } from './components/home/home.component';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
-import { ErrorInterceptor } from './helpers/error.interceptor';
+import { ErrorInterceptor } from './helpers/error.interceptor';;
+import { EditorComponent } from './editor/editor.component'
 
 
 
@@ -22,7 +23,8 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
     AppComponent,
     AlertComponent,
     HomeComponent
-  ],
+,
+    EditorComponent  ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
