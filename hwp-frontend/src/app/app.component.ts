@@ -4,8 +4,12 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from './services';
 import { User, Role } from './models';
 
-// tslint:disable-next-line: component-selector
-@Component({ selector: 'app', templateUrl: 'app.component.html' })
+
+@Component({
+  selector: 'app-boot',
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss']
+})
 export class AppComponent {
   [x: string]: any;
   user: User;
@@ -21,6 +25,7 @@ export class AppComponent {
   get isTeacher() {
     return this.user && this.user.role === Role.Teacher;
   }
+
 
   logout() {
     this.authenticationService.logout();
