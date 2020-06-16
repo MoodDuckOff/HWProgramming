@@ -25,7 +25,6 @@ namespace HWP_backend.Controllers
             _solvedTaskService = solvedTaskService;
         }
 
-        //Student section
 
         [Authorize(Roles = Role.User)]
         [HttpPost("solve")]

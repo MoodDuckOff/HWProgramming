@@ -19,7 +19,7 @@ namespace HWP_backend.Helpers
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            // connect to sql server database-
+            // connect to sql server database
             options.UseSqlServer(Configuration.GetConnectionString("WebApiDatabase"));
         }
 

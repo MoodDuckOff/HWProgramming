@@ -36,7 +36,7 @@ namespace HWP_backend.Controllers
 
             _service.MakeFile(_path, _name, model.Code);
             if (string.IsNullOrEmpty(model.Input)) 
-                return Ok(_service.BuildAndRun(_path, _name, model.Code));
+                return Ok(_service.BuildAndRun(_path, _name, null));
             var inputs = model.Input.Split("\n");
             return Ok(_service.BuildAndRun(_path, _name, inputs));
         }

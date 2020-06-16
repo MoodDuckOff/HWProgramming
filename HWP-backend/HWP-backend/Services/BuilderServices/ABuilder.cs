@@ -80,7 +80,6 @@ namespace HWP_backend.Services.BuilderServices
             };
 
             _processKiller.KillProcess(process);
-
             process.Start();
 
             var writer = process.StandardInput;
