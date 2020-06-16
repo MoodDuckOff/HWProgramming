@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './editor.component.html'
 })
 export class EditorComponent {
-  editorOptions = { theme: 'vs-dark', language: 'javascript' };
+  editorOptions = { theme: 'vs-dark', language: 'cpp' };
   code =
     '#include<iostream>\n\n' +
     'using namespace std;\n\n' +
