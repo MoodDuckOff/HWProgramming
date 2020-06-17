@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace HWP_backend.Services.BuilderServices
 {
@@ -11,6 +12,22 @@ namespace HWP_backend.Services.BuilderServices
 
             using TextWriter tw = new StreamWriter($"{path}\\{fileName}.cpp");
             tw.Write(data);
+        }
+
+        public static void DeleteFile(string path, string filename)
+        {
+
+            try
+            {
+                if (File.Exists($"{path}\\{filename}.cpp"))
+                    File.Delete($"{path}\\{filename}.cpp");
+                if (File.Exists($"{path}\\{filename}.exe"))
+                    File.Delete($"{path}\\{filename}.exe");
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine(e.Message + "\nDELETE FILE ERROR");
+            }
         }
     }
 }

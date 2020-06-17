@@ -14,7 +14,9 @@ namespace HWP_backend.Services.BuilderServices
         public BuildModelDTO BuildAndRun(string pathDir, string fileName, params string[] inputs)
         {
             var model = Build(pathDir, fileName);
-            if (model.IsSuccess) model.Output += $"\n{Run(pathDir, fileName, inputs)}";
+            if (model.IsSuccess) 
+                model.Output += $"\n{Run(pathDir, fileName, inputs)}";
+            DeleteFiles(pathDir, fileName);
             return model;
         }
 
@@ -33,6 +35,11 @@ namespace HWP_backend.Services.BuilderServices
         public void MakeFile(string pathDir, string fileName, string code)
         {
             FileMaker.WriteToFile(pathDir, fileName, code);
+        }
+
+        public void DeleteFiles(string pathDir, string fileName)
+        {
+            FileMaker.DeleteFile(pathDir, fileName);
         }
     }
 }
