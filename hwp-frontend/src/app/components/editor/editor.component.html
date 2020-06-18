@@ -1,4 +1,40 @@
-<div style="height: 500px;">
-  <ngx-monaco-editor style="height: 100%;" [options]="editorOptions" [(ngModel)]="code">
+<div class="form-group mb-2" style="height: 400px;">
+  <ngx-monaco-editor style="height: 100%;" [options]="editorOptions" [(ngModel)]="compileModel.code">
   </ngx-monaco-editor>
+</div>
+
+
+
+<div class="form-group">
+  <div class="custom-control custom-switch ml-2">
+    <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="ToogleStdin">
+    <label class="custom-control-label" for="customSwitch1">Toggle stdin</label>
+    <button [disabled]="loading" class="btn btn-primary ml-2 mr-2" style="float: right;"
+      (click)="onCompile(compileModel)">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      Compile
+    </button>
+  </div>
+
+  <div *ngIf="ToogleStdin">
+    <textarea class="form-control mt-3"
+      style="resize: vertical; max-height: 400px; min-height: 100px ; background: #1e1e1e; color: #d4d4d4;"
+      [(ngModel)]="compileModel.input" placeholder="Write stdin strings here..."></textarea>
+  </div>
+</div>
+
+<div *ngIf="compiled">
+  <div class="form-group">
+    <div *ngIf="this.receivedModel.isSuccess === true">
+      <textarea class="form-control border border-success" spellcheck="false" disabled="true" readonly="true"
+        style="resize: vertical; min-height: 280px ; background: #1e1e1e; color: #d4d4d4;">{{ receivedModel.output }}
+    </textarea>
+    </div>
+
+    <div *ngIf="this.receivedModel.isSuccess === false">
+      <textarea class="form-control border border-danger" spellcheck="false" disabled="true" readonly="true"
+        style="resize: vertical; min-height: 280px ; background: #1e1e1e; color: #d4d4d4;">{{ receivedModel.output }}
+    </textarea>
+    </div>
+  </div>
 </div>

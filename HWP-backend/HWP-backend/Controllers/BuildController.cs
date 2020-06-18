@@ -3,11 +3,13 @@ using System.Linq;
 using HWP_backend.Helpers;
 using HWP_backend.Models.DTO.Builds;
 using HWP_backend.Services.BuilderServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
 namespace HWP_backend.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BuildController : ControllerBase
@@ -25,7 +27,7 @@ namespace HWP_backend.Controllers
             _name = "default";
         }
 
-        
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult Run([FromBody] BuildModelDTO model)
         {

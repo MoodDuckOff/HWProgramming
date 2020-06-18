@@ -84,11 +84,14 @@ namespace HWP_backend.Services.BuilderServices
 
             var writer = process.StandardInput;
             var count = 0;
-            while (count < inputs.Length)
+
+            while (count < inputs?.Length)
             {
                 writer.WriteLine(inputs[count]);
                 count++;
             }
+
+
 
             writer.Dispose();
             var stringBuilder = new StringBuilder();

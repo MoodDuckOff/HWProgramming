@@ -83,10 +83,10 @@ namespace HWP_backend
                 });
 
             // configure DI for application services
+            services.AddScoped<BuildService>();
             services.AddScoped<UserService>();
             services.AddScoped<SolvedTaskService>();
             services.AddScoped<TaskService>();
-            services.AddScoped<BuildService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -103,7 +103,8 @@ namespace HWP_backend
             app.UseCors(x => x
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
-                .AllowAnyHeader());
+                .AllowAnyHeader()
+            );
 
             app.UseAuthentication();
             app.UseAuthorization();

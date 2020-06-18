@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
+import { CompileService } from '@app/services/compile.service';
 
 @NgModule(
   {
@@ -14,7 +15,7 @@ import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
       MonacoEditorModule
     ],
     exports: [EditorComponent],
-    providers: [],
+    providers: [CompileService],
     bootstrap: [],
   })
 export class EditorModule { }

@@ -10,6 +10,7 @@ import { AlertComponent } from './components/alert/alert.component';
 import { HomeComponent } from './components/home/home.component';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -25,7 +26,8 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    EditorModule
+    EditorModule,
+    NgbModule
   ],
   providers: [
     {

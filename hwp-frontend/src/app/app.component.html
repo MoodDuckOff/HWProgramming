@@ -1,12 +1,18 @@
 ﻿<!-- nav -->
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
+  <!--Left-->
   <div class="navbar-nav">
     <a class="nav-item nav-link" routerLink="/" routerLinkActive="active"
       [routerLinkActiveOptions]="{exact: true}">Home</a>
     <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
-    <a class="nav-right nav-link ml-auto" (click)="logout()">Logout</a>
+    <a class="nav-item nav-link" routerLink="/editor" routerLinkActive="active">Editor</a>
+  </div>
+  <!--Right-->
+  <div class="navbar-nav ml-auto">
+    <a class="nav-item nav-link" (click)="logout()">Logout</a>
   </div>
 </nav>
+
 
 <!-- main app container -->
 <div class="app-container" [ngClass]="{ 'bg-light': user }">
