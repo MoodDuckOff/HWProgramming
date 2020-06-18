@@ -41,19 +41,19 @@ export class AccountService {
     this.userSubject.next(null);
     this.router.navigate(['/account/login']);
   }
-
+  // create
   register(user: User) {
     return this.http.post(`${environment.apiUrl}/users/register`, user);
   }
-
+  // read
   getAll() {
     return this.http.get<User[]>(`${environment.apiUrl}/users`);
   }
-
+  // read
   getById(id: string) {
     return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
   }
-
+  // update
   update(id: string, params: any) {
     return this.http.put(`${environment.apiUrl}/users/${id}`, params)
       .pipe(map(x => {
@@ -69,7 +69,7 @@ export class AccountService {
         return x;
       }));
   }
-
+  // delete
   delete(id: string) {
     return this.http.delete(`${environment.apiUrl}/users/${id}`)
       .pipe(map(x => {
