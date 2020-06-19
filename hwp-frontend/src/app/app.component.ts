@@ -23,6 +23,10 @@ export class AppComponent {
     return this.user && this.user.role === Role.Teacher;
   }
 
+  get isUser() {
+    return this.user && this.user.role === Role.User;
+  }
+
   logout() {
     this.accountService.logout();
   }

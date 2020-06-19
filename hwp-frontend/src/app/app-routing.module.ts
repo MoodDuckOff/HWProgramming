@@ -1,4 +1,4 @@
-import { AdminComponent } from './components/admin/admin.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
@@ -20,7 +20,7 @@ const routes: Routes = [
     path: 'users',
     loadChildren: usersModule,
     canActivate: [AuthGuard],
-    data: { roles: [Role.Admin, Role.Teacher] }
+    data: { roles: [Role.Admin] }
   },
   {
     path: 'account',
@@ -31,10 +31,15 @@ const routes: Routes = [
     component: EditorComponent
   },
   {
-    path: 'admin',
-    component: AdminComponent,
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'teacher',
+    component: ProfileComponent,
     canActivate: [AuthGuard],
-    data: { roles: [Role.Admin, Role.Teacher] }
+    data: { roles: [Role.Teacher] }
   },
   // otherwise redirect to home
   {

@@ -8,6 +8,10 @@ import { AccountService } from '@app/services/account.service';
 export class HomeComponent {
   user: User;
 
+  get myRole() {
+    return this.user.role;
+  }
+
   constructor(private accountService: AccountService) {
     this.user = this.accountService.userValue;
   }

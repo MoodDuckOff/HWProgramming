@@ -37,6 +37,7 @@ export class AddEditComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       username: ['', Validators.required],
+      role: ['', Validators.required],
       password: ['', passwordValidators]
     });
 
@@ -47,6 +48,7 @@ export class AddEditComponent implements OnInit {
           this.f.firstName.setValue(x.firstName);
           this.f.lastName.setValue(x.lastName);
           this.f.username.setValue(x.username);
+          this.f.role.setValue(x.role);
         });
     }
   }

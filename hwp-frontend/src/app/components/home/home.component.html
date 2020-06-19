@@ -1,10 +1,11 @@
 ﻿<div class="p-4">
   <div class="container">
     <h1>Hi {{user.firstName}}!</h1>
-    <p>You're logged as Student!!!</p>
+    <p>You are logged as {{myRole}}!</p>
     <p>
-      <a routerLink="/tasks">Your tasks</a>
+      <a routerLink="/usertasks" *ngIf="myRole === 'User'">Your tasks</a>
+      <a routerLink="/users" *ngIf="myRole === 'Admin'">Manage users</a>
+      <a routerLink="/teachertasks" *ngIf="myRole === 'Teacher'">Your tasks</a>
     </p>
-    <!-- <p><a routerLink="/users">Manage Users</a></p> -->
   </div>
 </div>

@@ -1,4 +1,5 @@
-﻿import { EditorModule } from './components/editor/editor.module';
+﻿import { ProfileModule } from './components/profile/profile.module';
+import { EditorModule } from './components/editor/editor.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -11,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -19,7 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AppComponent,
     AlertComponent,
-    HomeComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     AppRoutingModule,
     EditorModule,
-    NgbModule
+    NgbModule,
+    ProfileModule
   ],
   providers: [
     {
