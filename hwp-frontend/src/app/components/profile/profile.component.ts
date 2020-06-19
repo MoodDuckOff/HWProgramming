@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '@app/services/account.service';
 import { User } from '@app/models/user';
-import { Validator, AbstractControl, NG_VALIDATORS, NgControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Directive, Input } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AlertService } from '@app/services/alert.service';
 

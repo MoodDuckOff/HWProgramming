@@ -7,8 +7,10 @@ import { EditorComponent } from './components/editor/editor.component';
 import { Role } from './models/role.model';
 
 
-const accountModule = () => import('./components/account/account.module').then(x => x.AccountModule);
-const usersModule = () => import('./components/users/users.module').then(x => x.UsersModule);
+const accountModule = () => import('./components/account/account.module')
+  .then(x => x.AccountModule);
+const usersManagementModule = () => import('./components/admin/users_management/users-management.module')
+  .then(x => x.UsersManagementModule);
 
 const routes: Routes = [
   {
@@ -17,8 +19,8 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'users',
-    loadChildren: usersModule,
+    path: 'users-management',
+    loadChildren: usersManagementModule,
     canActivate: [AuthGuard],
     data: { roles: [Role.Admin] }
   },

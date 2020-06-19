@@ -12,7 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ProfileComponent } from './components/profile/profile.component';
+
 
 
 
