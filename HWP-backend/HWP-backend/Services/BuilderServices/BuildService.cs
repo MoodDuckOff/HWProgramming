@@ -11,35 +11,35 @@ namespace HWP_backend.Services.BuilderServices
             _builder = new CppBuilder(new ProcessKiller());
         }
 
-        public BuildModelDTO BuildAndRun(string pathDir, string fileName, params string[] inputs)
+        public BuildModelDTO BuildAndRun(string pathDir, string fileName, bool isLinux, params string[] inputs)
         {
-            var model = Build(pathDir, fileName);
-            if (model.IsSuccess) 
-                model.Output += $"\n{Run(pathDir, fileName, inputs)}";
-            DeleteFiles(pathDir, fileName);
+            var model = Build(pathDir, fileName, isLinux);
+            if (model.IsSuccess)
+                model.Output += $"\n{Run(pathDir, fileName, isLinux, inputs)}";
+            DeleteFiles(pathDir, fileName, isLinux);
             return model;
         }
 
-        private BuildModelDTO Build(string pathDir, string fileName)
+        private BuildModelDTO Build(string pathDir, string fileName, bool isLinux)
         {
-            var result = _builder.Build(pathDir, fileName);
+            var result = _builder.Build(pathDir, fileName, isLinux);
             return result;
         }
 
-        private string Run(string pathDir, string fileName, params string[] inputs)
+        private string Run(string pathDir, string fileName, bool isLinux, params string[] inputs)
         {
-            var result = _builder.Run(pathDir, fileName, inputs);
+            var result = _builder.Run(pathDir, fileName, isLinux, inputs);
             return result;
         }
 
-        public void MakeFile(string pathDir, string fileName, string code)
+        public void MakeFile(string pathDir, string fileName, string code, bool isLinux)
         {
-            FileMaker.WriteToFile(pathDir, fileName, code);
+            FileMaker.WriteToFile(pathDir, fileName, code, isLinux);
         }
 
-        public void DeleteFiles(string pathDir, string fileName)
+        public void DeleteFiles(string pathDir, string fileName, bool isLinux)
         {
-            FileMaker.DeleteFile(pathDir, fileName);
+            FileMaker.DeleteFile(pathDir, fileName, isLinux);
         }
     }
 }

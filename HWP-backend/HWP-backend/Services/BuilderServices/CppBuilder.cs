@@ -8,15 +8,17 @@ namespace HWP_backend.Services.BuilderServices
         {
         }
 
-        public BuildModelDTO Build(string buildDir, string projectName)
+        public BuildModelDTO Build(string buildDir, string projectName, bool isLinux)
         {
-            var commandToBuild = $"-Wall {buildDir}\\{projectName}.cpp -o {buildDir}\\{projectName}.exe";
+            var commandToBuild = isLinux ? $"-Wall {buildDir}/{projectName}.cpp -o {buildDir}/{projectName}" :
+                $"-Wall {buildDir}\\{projectName}.cpp -o {buildDir}\\{projectName}.exe";
+
             return BuildInternal(commandToBuild);
         }
 
-        public string Run(string buildDir, string projectName, params string[] inputs)
+        public string Run(string buildDir, string projectName, bool isLinux, params string[] inputs)
         {
-            var runCommand = $"{buildDir}\\{projectName}.exe";
+            var runCommand = isLinux ? $"{buildDir}/{projectName}" : $"{buildDir}\\{projectName}.exe";
             return RunInternal(runCommand, inputs);
         }
     }

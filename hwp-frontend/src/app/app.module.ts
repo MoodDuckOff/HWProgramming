@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ListComponent } from './components/teacher/users/list/list.component';
 
 
 
@@ -22,6 +23,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppComponent,
     AlertComponent,
     HomeComponent
+    ,
+    ListComponent
   ],
   imports: [
     BrowserModule,

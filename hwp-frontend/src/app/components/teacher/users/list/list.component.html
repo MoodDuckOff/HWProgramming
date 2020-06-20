@@ -1,0 +1,31 @@
+<h1>Users Management</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add User</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="width: 30%">First Name</th>
+      <th style="width: 30%">Last Name</th>
+      <th style="width: 30%">Role</th>
+      <th style="width: 30%">Username</th>
+      <th style="width: 10%"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <div *ngIf="user.role === 'User'">
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.role}}</td>
+        <td>{{user.username}}</td>
+        <td style="white-space: nowrap">
+          <!-- buttons here-->
+        </td>
+      </div>
+    </tr>
+    <tr *ngIf="!users">
+      <td colspan="4" class="text-center">
+        <span class="spinner-border spinner-border-lg align-center"></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
