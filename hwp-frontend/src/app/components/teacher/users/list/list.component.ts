@@ -4,7 +4,7 @@ import { AccountService } from '@app/services/account.service';
 
 
 
-@Component({ templateUrl: 'list.component.html' })
+@Component({ templateUrl: './list.component.html' })
 export class ListComponent implements OnInit {
   users = null;
 

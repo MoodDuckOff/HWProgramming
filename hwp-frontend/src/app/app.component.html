@@ -4,8 +4,9 @@
   <div class="navbar-nav">
     <a class="nav-item nav-link" routerLink="/" routerLinkActive="active"
       [routerLinkActiveOptions]="{exact: true}">Home</a>
-    <a class="nav-item nav-link" routerLink="/users-management" routerLinkActive="active" *ngIf="isAdmin">Management</a>
-    <a class="nav-item nav-link" routerLink="/teacher" routerLinkActive="active" *ngIf="isTeacher">Teacher</a>
+    <a class="nav-item nav-link" routerLink="/users-management" routerLinkActive="active" *ngIf="isAdmin">Users</a>
+    <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active" *ngIf="isTeacher">Users</a>
+    <a class="nav-item nav-link" routerLink="/tasks-management" routerLinkActive="active" *ngIf="isTeacher">Tasks</a>
     <a class="nav-item nav-link" routerLink="/editor" routerLinkActive="active">Editor</a>
   </div>
   <!--Right-->

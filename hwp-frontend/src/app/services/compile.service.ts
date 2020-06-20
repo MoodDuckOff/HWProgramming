@@ -17,6 +17,4 @@ export class CompileService {
   buildAndRun(compileModel: CompileModel) {
     return this.http.post(`${environment.apiUrl}/build`, compileModel);
   }
-
-
 }
