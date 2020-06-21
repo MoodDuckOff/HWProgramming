@@ -1,3 +1,4 @@
+
 <div class="form-group mb-2" style="height: 400px;">
   <ngx-monaco-editor style="height: 100%;" [options]="editorOptions" [(ngModel)]="compileModel.code">
   </ngx-monaco-editor>
@@ -7,7 +8,7 @@
 
 <div class="form-group">
   <div class="custom-control custom-switch ml-2">
-    <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="ToogleStdin">
+    <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="ToggleStdin">
     <label class="custom-control-label" for="customSwitch1">Toggle stdin</label>
     <button [disabled]="loading" class="btn btn-primary ml-2 mr-2" style="float: right;"
       (click)="onCompile(compileModel)">
@@ -16,7 +17,7 @@
     </button>
   </div>
 
-  <div *ngIf="ToogleStdin">
+  <div *ngIf="ToggleStdin">
     <textarea class="form-control mt-3"
       style="resize: vertical; max-height: 400px; min-height: 100px ; background: #1e1e1e; color: #d4d4d4;"
       [(ngModel)]="compileModel.input" placeholder="Write stdin strings here..."></textarea>

@@ -12,7 +12,7 @@ import { User } from '@app/models/user';
 @Injectable({
   providedIn: 'root'
 })
-export class TaskService {
+export class SolvedTaskService {
 
   constructor(
     private router: Router,
@@ -30,16 +30,16 @@ export class TaskService {
   }
 
   // read by id's
-  getById(user: User, task: Task) {
-    return this.http.get<SolvedTask>(`${environment.apiUrl}/solvedtasks/user/${user.id}/${task.id}`);
+  getById(userId: string, taskId: string) {
+    return this.http.get<SolvedTask>(`${environment.apiUrl}/solvedtasks/user/${userId}/${taskId}`);
   }
   // read by uid
-  getAllByUserId(user: User) {
-    return this.http.get<SolvedTask[]>(`${environment.apiUrl}/solvedtasks/user/${user.id}`);
+  getAllByUserId(userId: string) {
+    return this.http.get<SolvedTask[]>(`${environment.apiUrl}/solvedtasks/user/${userId}`);
   }
   // read by tid
-  getAllByTaskId(task: Task) {
-    return this.http.get<SolvedTask[]>(`${environment.apiUrl}/solvedtasks/user/${task.id}`);
+  getAllByTaskId(taskId: string) {
+    return this.http.get<SolvedTask[]>(`${environment.apiUrl}/solvedtasks/user/${taskId}`);
   }
 
   // update

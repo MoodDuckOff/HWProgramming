@@ -3,9 +3,9 @@
     <h1>Hi {{user.firstName}}!</h1>
     <p>You are logged as {{myRole}}!</p>
     <p>
-      <a routerLink="/usertasks" *ngIf="myRole === 'User'">Your tasks</a>
+      <a routerLink="/tasks" *ngIf="myRole === 'User'">Your tasks</a>
       <a routerLink="/users-management" *ngIf="myRole === 'Admin'">Manage users</a>
-      <a routerLink="/teachertasks" *ngIf="myRole === 'Teacher'">Your tasks</a>
+      <a routerLink="/tasks-management" *ngIf="myRole === 'Teacher'">Your tasks</a>
     </p>
   </div>
 </div>

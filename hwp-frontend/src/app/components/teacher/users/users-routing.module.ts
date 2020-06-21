@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LayoutComponent } from './layout/layout.component';
 import { ListComponent } from './list/list.component';
+import {UnsolvedSolvedComponent} from './unsolved-solved/unsolved-solved.component';
+
 
 
 const routes: Routes = [
@@ -12,6 +14,14 @@ const routes: Routes = [
       {
         path: '',
         component: ListComponent
+      },
+      {
+        path: ':id/unsolved-tasks',
+        component: UnsolvedSolvedComponent
+      },
+      {
+        path: ':id/solved-tasks',
+        component: UnsolvedSolvedComponent
       }
     ]
   }

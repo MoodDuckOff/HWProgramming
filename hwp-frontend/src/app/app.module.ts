@@ -1,6 +1,4 @@
-﻿import { UsersModule } from './components/teacher/users/users.module';
-import { TasksManagementModule } from './components/teacher/tasks_management/tasks-management.module';
-import { ProfileModule } from './components/profile/profile.module';
+﻿import { ProfileModule } from './components/profile/profile.module';
 import { EditorModule } from './components/editor/editor.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';

@@ -1,0 +1,72 @@
+<!-- Unsolved Tasks -->
+<ng-container *ngIf="isUnsolvedMode">
+  <h1>Unsolved {{nameOf(user)}} Tasks</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th style="width: 45%">Title</th>
+        <th style="width: 45%">Description</th>
+        <th style="width: 40%">Author</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let unsolvedTask of unsolvedTasks">
+        <td>{{unsolvedTask.title}}</td>
+        <td>
+          <textarea disabled>{{unsolvedTask.description}}</textarea>
+        </td>
+        <td>{{findName(unsolvedTask.authorId)}}</td>
+      </tr>
+      <tr *ngIf="!unsolvedTasks">
+        <td colspan="4" class="text-center">
+          <span class="spinner-border spinner-border-lg align-center"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <a routerLink="/users" class="btn btn-link">Back</a>
+</ng-container>
+
+<!------------------>
+<!------------------>
+<!------------------>
+
+<!-- Solved Tasks -->
+<ng-container *ngIf="!isUnsolvedMode">
+  <h1>Solved {{nameOf(user)}} Tasks</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th style="width: 15%">Title</th>
+        <th style="width: 15%">Description</th>
+        <th style="width: 5%">Author</th>
+        <th style="width: 10%">Mark</th>
+        <th style="width: 40%">Solution</th>
+        <th style="width: 10%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let utask of user.tasks; index as i">
+        <td>{{utask.title}}</td>
+        <td>
+          <textarea disabled rows="5" cols="20">{{utask.description}}</textarea>
+        </td>
+        <td>{{findName(utask.authorId)}}</td>
+        <td>{{solvedTasks[i].mark}}</td>
+
+        <td>
+          <textarea disabled rows="5" cols="60">{{solvedTasks[i].solution}}</textarea>
+        </td>
+        <td style="white-space: nowrap">
+          <a routerLink="/users/{{uId}}/task/{{utask.id}}" class="btn btn-primary mr-1">watch</a>
+        </td>
+      </tr>
+      <tr *ngIf="!user.tasks">
+        <td colspan="4" class="text-center">
+          <span class="spinner-border spinner-border-lg align-center"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <a routerLink="/users" class="btn btn-link">Back</a>
+</ng-container>

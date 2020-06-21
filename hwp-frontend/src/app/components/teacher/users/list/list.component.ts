@@ -6,14 +6,17 @@ import { AccountService } from '@app/services/account.service';
 
 @Component({ templateUrl: './list.component.html' })
 export class ListComponent implements OnInit {
-  users = null;
+  usersLowRole = null;
+
 
   constructor(private accountService: AccountService) { }
 
   ngOnInit() {
     this.accountService.getAll()
       .pipe(first())
-      .subscribe(users => this.users = users);
+      .subscribe(users => {
+        this.usersLowRole = users.filter(u => u.role === 'User');
+      });
   }
 
 }
