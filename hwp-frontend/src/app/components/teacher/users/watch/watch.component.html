@@ -1,0 +1,43 @@
+<!--suppress ALL -->
+<h1>Rate Task</h1>
+<form (ngSubmit)="onSubmit()" [formGroup]="form">
+  <!-- Form Group -->
+  <div class="form-group mt-4 ml-1">
+    <!-- Title -->
+    <div class="form-group">
+      <label for="mark">Mark</label>
+      <input
+        [ngClass]="{ 'is-invalid': submitted && f.mark.errors }"
+        class="form-control"
+        formControlName="mark"
+        type="text"
+      />
+      <div
+        *ngIf="submitted && f.mark.errors"
+        class="invalid-feedback">
+        <div *ngIf="f.mark.errors.required">Mark is required</div>
+      </div>
+    </div>
+    <!-- Description -->
+    <div class="form-group">
+      <label for="solution">Solution</label>
+      <textarea
+        [ngClass]="{ 'is-invalid': submitted && f.solution.errors }"
+        [rows]="5"
+        class="form-control"
+        formControlName="solution"
+        type="text"
+        style="background: #1e1e1e; color: #d4d4d4;"
+      >
+      </textarea>
+    </div>
+  </div>
+  <!-- Buttons -->
+  <div class="form-group">
+    <button [disabled]="loading" class="btn btn-primary">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      Rate and Save
+    </button>
+    <a class="btn btn-link" routerLink="/solved-tasks">Cancel</a>
+  </div>
+</form>

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LayoutComponent } from './layout/layout.component';
 import { ListComponent } from './list/list.component';
+import {SolveComponent} from '@app/components/user/tasks/solve/solve.component';
 
 
 const routes: Routes = [
@@ -14,12 +15,8 @@ const routes: Routes = [
         component: ListComponent
       },
       {
-        path: 'add',
-        component: ListComponent
-      },
-      {
-        path: 'edit/:id',
-        component: ListComponent
+        path: ':tid/solve',
+        component: SolveComponent
       }
     ]
   }
@@ -29,4 +26,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class UserRoutingModule { }
+export class TasksRoutingModule { }

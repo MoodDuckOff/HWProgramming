@@ -75,8 +75,8 @@ export class AddEditComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.alertService.success('Task added successfully', { keepAfterRouteChange: true });
-          this.router.navigate(['.', { relativeTo: this.route }]);
+          this.alertService.success('Task added successfully', { keepAfterRouteChange: false });
+          this.router.navigate(['..', { relativeTo: this.route }]);
         },
         error => {
           this.alertService.error(error);
@@ -89,7 +89,7 @@ export class AddEditComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.alertService.success('Update successful', { keepAfterRouteChange: true });
+          this.alertService.success('Update successful', { keepAfterRouteChange: false });
           this.router.navigate(['..', { relativeTo: this.route }]);
         },
         error => {

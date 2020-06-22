@@ -13,8 +13,11 @@ const usersManagementModule = () => import('./components/admin/users_management/
   .then(x => x.UsersManagementModule);
 const usersModule = () => import('./components/teacher/users/users.module')
   .then(x => x.UsersModule);
-const taskModule = () => import('./components/teacher/tasks_management/tasks-management.module')
+const tasksManagementModule = () => import('./components/teacher/tasks_management/tasks-management.module')
   .then(x => x.TasksManagementModule);
+const tasksModule = () => import('./components/user/tasks/tasks.module')
+  .then(x => x.TasksModule);
+
 
 const routes: Routes = [
   {
@@ -46,12 +49,19 @@ const routes: Routes = [
     loadChildren: usersModule,
     canActivate: [AuthGuard],
     data: { roles: [Role.Teacher] }
-  }, {
+  },
+  {
     path: 'tasks-management',
-    loadChildren: taskModule,
+    loadChildren: tasksManagementModule,
     canActivate: [AuthGuard],
     data: { roles: [Role.Teacher] }
   },
+  {
+    path: 'tasks',
+    loadChildren: tasksModule,
+    canActivate: [AuthGuard],
+  },
+
   // otherwise redirect to home
   {
     path: '**',

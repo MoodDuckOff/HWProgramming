@@ -20,8 +20,13 @@ export class SolvedTaskService {
   ) { }
 
   // create
-  solve(solvedTask: SolvedTask) {
-    return this.http.post(`${environment.apiUrl}/solvedtasks/solve/`, solvedTask);
+  solve(solvedTask: SolvedTask, uid: string, tid: string) {
+    const body = {
+      solution: solvedTask.solution,
+      userId: uid,
+      taskId: tid,
+    };
+    return this.http.post(`${environment.apiUrl}/solvedtasks/solve/`, body);
   }
 
   // read all
@@ -31,7 +36,7 @@ export class SolvedTaskService {
 
   // read by id's
   getById(userId: string, taskId: string) {
-    return this.http.get<SolvedTask>(`${environment.apiUrl}/solvedtasks/user/${userId}/${taskId}`);
+    return this.http.get<SolvedTask>(`${environment.apiUrl}/solvedtasks/user/${userId}/task/${taskId}`);
   }
   // read by uid
   getAllByUserId(userId: string) {

@@ -1,0 +1,28 @@
+<h1>Tasks</h1>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th style="width: 30%">Title</th>
+    <th style="width: 30%">Description</th>
+    <th style="width: 30%">Author</th>
+    <th style="width: 10%"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let task of tasks">
+    <td>{{task.title}}</td>
+    <td>
+      <textarea disabled cols="40" rows="5">{{task.description}}</textarea>
+    </td>
+    <td>{{findName(task.authorId)}}</td>
+    <td style="white-space: nowrap">
+      <a routerLink="{{task.id}}/solve" class="btn btn-primary mr-1">Solve</a>
+    </td>
+  </tr>
+  <tr *ngIf="!tasks">
+    <td colspan="4" class="text-center">
+      <span class="spinner-border spinner-border-lg align-center"></span>
+    </td>
+  </tr>
+  </tbody>
+</table>
