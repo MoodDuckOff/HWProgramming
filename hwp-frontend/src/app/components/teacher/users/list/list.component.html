@@ -1,0 +1,29 @@
+<h1>Users</h1>
+<table class="table table-striped mt-3">
+  <thead>
+    <tr>
+      <th style="width: 30%">First Name</th>
+      <th style="width: 30%">Last Name</th>
+      <th style="width: 30%">Username</th>
+      <!-- white space -->
+      <th class="text-center" style="width: 20%">Tasks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of usersLowRole">
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.username}}</td>
+        <td class="ml-auto" style="white-space: nowrap">
+          <a routerLink="{{user.id}}/unsolved-tasks" class="btn btn-sm btn-warning mr-1">Unsolved</a>
+          <a routerLink="{{user.id}}/solved-tasks" class="btn btn-sm btn-success mr-1">Solved</a>
+        </td>
+
+    </tr>
+    <tr *ngIf="!usersLowRole">
+      <td colspan="4" class="text-center">
+        <span class="spinner-border spinner-border-lg align-center"></span>
+      </td>
+    </tr>
+  </tbody>
+</table>

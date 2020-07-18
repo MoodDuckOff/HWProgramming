@@ -1,0 +1,67 @@
+<!--suppress ALL -->
+
+<div class="p-4">
+  <div class="container">
+
+    <h1>Profile</h1>
+    <form [formGroup]="form" class="mt-4 ml-1" (ngSubmit)="onSubmit()">
+      <!-- First Name -->
+
+      <div class="form-group col">
+        <label for="firstName">First Name</label>
+        <input type="text" formControlName="firstName" class="form-control" placeholder="Type here to change first name"
+          [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+          <div *ngIf="f.firstName.errors.required">First Name is required</div>
+        </div>
+      </div>
+      <!-- Last Name -->
+      <div class="form-group col">
+        <label for="lastName">Last Name</label>
+        <input type="text" formControlName="lastName" class="form-control" placeholder="Type here to change last name"
+          [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+          <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+        </div>
+      </div>
+      <!-- Role -->
+      <div class="form-group col">
+        <label for="role">Role</label>
+        <input *ngIf="user.role === 'User' " type="text" formControlName="role" class="form-control"
+          placeholder="Type here to change role" disabled />
+        <input *ngIf="user.role !== 'User' " type="text" formControlName="role" class="form-control"
+          placeholder="Type here to change role" />
+      </div>
+
+      <!-- Username -->
+      <div class=" form-group col">
+        <label for="username">Username</label>
+        <input type="text" formControlName="username" class="form-control" placeholder="Type here to change username"
+          [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+          <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
+      </div>
+      <!-- Password -->
+      <div class="form-group col">
+        <label for="password">
+          Password
+        </label>
+        <input type="password" formControlName="password" class="form-control"
+          placeholder="Type here to change password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+      </div>
+      <!-- Buttons -->
+      <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Save changes
+        </button>
+        <a href="/" class="btn btn-link">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>

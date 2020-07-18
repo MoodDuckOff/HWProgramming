@@ -1,4 +1,5 @@
-﻿import { Injectable } from '@angular/core';
+﻿import { Task } from './../models/task.model';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -41,19 +42,19 @@ export class AccountService {
     this.userSubject.next(null);
     this.router.navigate(['/account/login']);
   }
-
+  // create
   register(user: User) {
     return this.http.post(`${environment.apiUrl}/users/register`, user);
   }
-
+  // read
   getAll() {
     return this.http.get<User[]>(`${environment.apiUrl}/users`);
   }
-
+  // read
   getById(id: string) {
     return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
   }
-
+  // update
   update(id: string, params: any) {
     return this.http.put(`${environment.apiUrl}/users/${id}`, params)
       .pipe(map(x => {
@@ -69,7 +70,7 @@ export class AccountService {
         return x;
       }));
   }
-
+  // delete
   delete(id: string) {
     return this.http.delete(`${environment.apiUrl}/users/${id}`)
       .pipe(map(x => {
@@ -79,5 +80,9 @@ export class AccountService {
         }
         return x;
       }));
+  }
+  // read task
+  getAllUnsolvedTaskById(userId: string) {
+    return this.http.get<Task[]>(`${environment.apiUrl}/users/${userId}/tasks`);
   }
 }

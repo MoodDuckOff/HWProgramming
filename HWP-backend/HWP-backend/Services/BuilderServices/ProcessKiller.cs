@@ -11,7 +11,7 @@ namespace HWP_backend.Services.BuilderServices
 
         public ProcessKiller()
         {
-            _delayInSeconds = 3;
+            _delayInSeconds = 7;
         }
 
 
@@ -27,7 +27,7 @@ namespace HWP_backend.Services.BuilderServices
             try
             {
                 if (p != null && p.HasExited) return;
-                p.Kill();
+                p?.Kill();
                 _timer.Dispose();
                 Console.WriteLine("Process was killed");
             }

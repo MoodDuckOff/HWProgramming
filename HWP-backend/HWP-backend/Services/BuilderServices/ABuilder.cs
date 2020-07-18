@@ -18,6 +18,9 @@ namespace HWP_backend.Services.BuilderServices
         {
             var outputMessage = "";
             var errorMessage = "";
+            var sbError = new StringBuilder();
+            var sbOut = new StringBuilder();
+
             var process = new Process
             {
                 StartInfo = new ProcessStartInfo
@@ -35,8 +38,7 @@ namespace HWP_backend.Services.BuilderServices
             {
                 _processKiller.KillProcess(process);
                 process.Start();
-                var sbError = new StringBuilder();
-                var sbOut = new StringBuilder();
+
                 while (!process.StandardOutput.EndOfStream) sbOut.Append($"{process.StandardOutput.ReadLine()}\n");
                 if (!process.StandardError.EndOfStream) sbError.Append(process.StandardError.ReadToEnd());
                 process.WaitForExit();
@@ -66,6 +68,8 @@ namespace HWP_backend.Services.BuilderServices
 
         public string RunInternal(string runCommand, params string[] inputs)
         {
+            var stringBuilder = new StringBuilder();
+
             using var process = new Process
             {
                 StartInfo = new ProcessStartInfo
@@ -74,32 +78,45 @@ namespace HWP_backend.Services.BuilderServices
                     RedirectStandardInput = true,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
-                    CreateNoWindow = true,
+                    //CreateNoWindow = true;
                     UseShellExecute = false
                 }
             };
 
-            _processKiller.KillProcess(process);
-            process.Start();
-
-            var writer = process.StandardInput;
-            var count = 0;
-
-            while (count < inputs?.Length)
+            try
             {
-                writer.WriteLine(inputs[count]);
-                count++;
+                _processKiller.KillProcess(process);
+                process.Start();
+
+                var writer = process.StandardInput;
+                var count = 0;
+
+                while (count < inputs?.Length)
+                {
+                    writer.WriteLine(inputs[count]);
+                    count++;
+                }
+
+
+                writer.Dispose();
+                while (!process.StandardOutput.EndOfStream) stringBuilder.Append($"{process.StandardOutput.ReadLine()}\n");
+                if (!process.StandardError.EndOfStream) stringBuilder.Append(process.StandardError.ReadToEnd());
+
+                process.WaitForExit();
+
+                stringBuilder.Append(
+                    $"\nTime Elapsed: {process.ExitTime - process.StartTime}\nProcess exit with code: {process.ExitCode}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                process.Dispose();
             }
 
 
-
-            writer.Dispose();
-            var stringBuilder = new StringBuilder();
-            while (!process.StandardOutput.EndOfStream) stringBuilder.Append($"{process.StandardOutput.ReadLine()}\n");
-            if (!process.StandardError.EndOfStream) stringBuilder.Append(process.StandardError.ReadToEnd());
-            process.WaitForExit();
-            stringBuilder.Append(
-                $"\nTime Elapsed: {process.ExitTime - process.StartTime}\nProcess exit with code: {process.ExitCode}");
             return stringBuilder.ToString();
         }
     }

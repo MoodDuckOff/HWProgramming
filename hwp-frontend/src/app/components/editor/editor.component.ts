@@ -1,7 +1,7 @@
-import { CompileModel } from './../../models/compile.model';
-import { AlertService } from './../../services/alert.service';
-import { CompileService } from './../../services/compile.service';
-import { Component, OnInit } from '@angular/core';
+import { CompileModel } from '@app/models/compile.model';
+import { AlertService } from '@app/services/alert.service';
+import { CompileService } from '@app/services/compile.service';
+import { Component} from '@angular/core';
 import { first } from 'rxjs/operators';
 
 @Component({
@@ -9,7 +9,7 @@ import { first } from 'rxjs/operators';
   templateUrl: './editor.component.html'
 })
 export class EditorComponent {
-  ToogleStdin = false;
+  ToggleStdin = false;
   loading = false;
   editorOptions = { theme: 'vs-dark', language: 'cpp' };
   compileModel: CompileModel = new CompileModel(
