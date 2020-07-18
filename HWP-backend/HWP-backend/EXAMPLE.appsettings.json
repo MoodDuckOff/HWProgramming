@@ -1,0 +1,19 @@
+{// create appsettings.json and appsettings.Development.json
+  "AppSettings": {
+    "Secret": "", // secret jwt key
+    "WorkDir": "C:\\Compiler", // windows dir to make .cpp and .exe files
+    "LinuxDir": "/home/vitalikon/HWP/Exec" // same for linux
+  },
+  "ConnectionStrings": {
+    "WebApiDatabase": "Data Source=<login>;Initial Catalog=<database>;Integrated Security=True", // local database
+    "WebApi<deploy>": "Server=<name>.database.windows.net,<num>;Initial Catalog=<database>;Persist Security Info=False;User ID=<uid>;Password=<password>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*"
+}
